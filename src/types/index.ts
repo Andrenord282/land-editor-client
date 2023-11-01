@@ -1,0 +1,1 @@
+export { IAnyObject,  } from "./global";

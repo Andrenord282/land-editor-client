@@ -1,7 +1,9 @@
-import { IInitStoreSlice } from "./initStoreSlice/types";
+import { IEditorTextTaskSlice } from "./editorTextTask";
+import { IEditorGeoTaskSlice } from "./editorGeoTask/types";
+import { IEditorCommnentsTaskSlice } from "./editorCommentsTask/types";
 
-interface IStore {
-    initStore: IInitStoreSlice;
+export interface IStore {
+    editorTextTask: IEditorTextTaskSlice;
+    editorGeoTask: IEditorGeoTaskSlice;
+    editorCommentsTask: IEditorCommnentsTaskSlice;
 }
-
-export { IStore };

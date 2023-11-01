@@ -7,6 +7,7 @@ interface IBuildEnv {
 
 interface IBuildPaths {
     build: string;
+    src: string;
     entry: string;
     html: string;
 }

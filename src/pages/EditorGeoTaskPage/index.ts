@@ -1,0 +1,1 @@
+export { EditorGeoTaskPage } from "./EditorGeoTaskPage";

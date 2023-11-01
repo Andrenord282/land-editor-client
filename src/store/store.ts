@@ -1,8 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { initStoreReducer } from "./initStoreSlice";
+import { editorTextTaskReducer } from "./editorTextTask";
+import { editorGeoTaskReducer } from "./editorGeoTask";
+import { editorCommentsTaskReducer } from "./editorCommentsTask";
 
 const rootReducer = combineReducers({
-    initStore: initStoreReducer,
+    editorTextTask: editorTextTaskReducer,
+    editorGeoTask: editorGeoTaskReducer,
+    editorCommentsTask: editorCommentsTaskReducer,
 });
 
 const store = configureStore({

@@ -6,6 +6,7 @@ import { IBuildEnv, IBuildPaths } from "./config/build/types";
 export default (env: IBuildEnv): TWebpackConfiguration => {
     const paths: IBuildPaths = {
         entry: path.resolve(__dirname, "src", "index.tsx"),
+        src: path.resolve(__dirname, "src"),
         build: path.resolve(__dirname, "build"),
         html: path.resolve(__dirname, "public", "index.html"),
     };

@@ -22,7 +22,7 @@ const buildWebpackConfig = (options: IBuildOptions): TWebpackConfiguration => {
             rules: buildLoaders(),
         },
         plugins: buildPlugins(options),
-        resolve: buildResolve(),
+        resolve: buildResolve(options),
     };
 };
 

@@ -5,6 +5,7 @@ const buildDevServer = (options: IBuildOptions): TDevServerConfiguration => {
     return {
         port: options.PORT,
         open: true,
+        historyApiFallback: true,
     };
 };
 
