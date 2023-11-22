@@ -1,10 +1,5 @@
-//hooks//
 import { useCommentListInputState } from "./hooks/useCommentListInputState";
-
-//components//
 import { Box, Grid, TextField, Button } from "@mui/material";
-
-// .vk-comment-load
 
 const CommentListInput = () => {
     const {

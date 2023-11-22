@@ -7,13 +7,13 @@ import { selectInitGeo, selectReplacedGeo, selectAdaptGeoList } from "store/edit
 import { selectCommentNameSelector, selectCommentAvaSelector, selectCommentatorList } from "store/editorCommentsTask";
 
 // types //
-import { ITextListElement } from "store/editorTextTask";
+import { TTextListElement } from "store/editorTextTask";
 import { TGeoValue } from "store/editorGeoTask";
 import { TCommentatorListElement } from "store/editorCommentsTask";
 
 export type TCollcetionData = {
-    replaceText: ITextListElement[];
-    addGeoText: ITextListElement[];
+    replaceText: TTextListElement[];
+    addGeoText: TTextListElement[];
     initGeo: TGeoValue;
     replacedGeo: TGeoValue;
     adaptGeoList: TGeoValue[];

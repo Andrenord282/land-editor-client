@@ -1,7 +1,4 @@
-//react-router-dom//
 import { Link as RouterLink } from "react-router-dom";
-
-//components//
 import { Grid, Button } from "@mui/material";
 
 const Navigate = () => {

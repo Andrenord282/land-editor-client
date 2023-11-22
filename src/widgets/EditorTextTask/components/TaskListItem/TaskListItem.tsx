@@ -7,11 +7,11 @@ import { Box, Grid, Typography, IconButton, Input } from "@mui/material";
 import { Edit, CheckCircle, Cancel, Delete, Title, Public } from "@mui/icons-material";
 
 //types//
-import { ITextListElement, TEditorTaskListName } from "store/editorTextTask";
+import { TTextListElement, TEditorTaskListName } from "store/editorTextTask";
 
 export interface ITaskListItemProps {
     itemIdndex: number;
-    element: ITextListElement;
+    element: TTextListElement;
     listName: TEditorTaskListName;
 }
 

@@ -1,10 +1,7 @@
-//redux//
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-//types//
 import { IEditorGeoTaskSlice, PayloadGeoValue } from "./types";
 
-//static data//
 import { geoList } from "./data";
 
 const initialState: IEditorGeoTaskSlice = {

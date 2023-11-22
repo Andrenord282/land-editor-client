@@ -1,20 +1,9 @@
-// utilities //
 import { ErrorManager } from "utilities/errorManager";
-
-// react //
 import { useState, useEffect, ChangeEvent } from "react";
-
-// redux //
 import { useDispatch, useSelector } from "react-redux";
-
-// actions //
 import { editorCommentsTaskActions } from "store/editorCommentsTask";
-
-// selectors //
 import { selectSrcHtmlString } from "store/editorTextTask";
 import { selectSelectorName } from "store/editorCommentsTask/selectors";
-
-// types //
 import { IStore } from "store/types";
 import { TSelectorInputProps } from "../SelectorInput";
 import { PayloadSelectorType } from "store/editorCommentsTask";
@@ -54,18 +43,17 @@ const useSelectorInputState = (props: TSelectorInputProps): TSelectorInputState 
             if (errorState) {
                 setErrorState(false);
             }
-
-            if (!textFieldValue) {
+            if (!srcHtmlString) {
                 throw new ErrorManager(
                     "Error onClickWriteSelector",
-                    `не удалось найти html, добавьте в иходных данный`
+                    `не удалось найти html, добавьте в иходные данные`
                 );
             }
 
             const parser = new DOMParser();
             const DOM = parser.parseFromString(srcHtmlString, "text/html");
 
-            if (DOM.querySelectorAll(textFieldValue).length === 0) {
+            if (DOM.querySelectorAll(`${textFieldValue}`).length === 0) {
                 throw new ErrorManager("Error onClickWriteSelector", `не удалось найти селектор: ${textFieldValue}`);
             }
 

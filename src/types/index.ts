@@ -1,1 +1,1 @@
-export { IAnyObject,  } from "./global";
+export { IAnyObject } from "./global";

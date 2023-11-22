@@ -1,4 +1,4 @@
-enum ServerResponse {
+export enum ServerResponse {
     SUCCESS = 200,
     ERROR_SERVER = 500,
     ERROR_CLIENT = 400,
@@ -6,15 +6,15 @@ enum ServerResponse {
 
 export type TFetchOptions = {
     url: string;
-    body: string | FormData | Blob | BufferSource | URLSearchParams;
+    body: string | FormData | Blob | BufferSource | URLSearchParams | null;
 };
 
 type TFetchOperations = {
-    postFetch: (options: TFetchOptions) => Promise<void>;
+    postFetch: (options: TFetchOptions) => Promise<Response | Error | void>;
 };
 
 const useFetch = (): TFetchOperations => {
-    const postFetch = async (options: TFetchOptions) => {
+    const postFetch = async (options: TFetchOptions): Promise<Response | Error | void> => {
         try {
             const { url, body } = options;
 
@@ -23,10 +23,12 @@ const useFetch = (): TFetchOperations => {
                 body: body,
             });
 
-            if (response.status === ServerResponse.SUCCESS) {
-                console.log(123);
+            return response;
+        } catch (error) {
+            if (error instanceof Error) {
+                return error;
             }
-        } catch (error) {}
+        }
     };
 
     return {

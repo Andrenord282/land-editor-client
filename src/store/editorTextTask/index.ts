@@ -1,7 +1,6 @@
 export { editorTextTaskActions } from "./editorTextTaskSlice";
 export { editorTextTaskReducer } from "./editorTextTaskSlice";
 
-// selectors //
 export {
     selectLandAddress,
     selectJSONstring,
@@ -13,10 +12,9 @@ export {
     selectAddGeoTextList,
 } from "./selectors";
 
-//types//
 export {
-    IEditorTextTaskSlice,
-    ITextListElement,
+    TEditorTextTaskSlice,
+    TTextListElement,
     PayloadMoveTextListItem,
     TEditorTaskListName,
     PayloadLandAddress,

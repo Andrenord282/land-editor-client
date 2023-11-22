@@ -2,11 +2,11 @@
 import { useTaskListState } from "./hooks/useTaskListState";
 
 //components//
-import { Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { TaskListItem } from "../TaskListItem";
 
 //types//
-import { ITextListElement, TEditorTaskListName } from "store/editorTextTask";
+import { TTextListElement, TEditorTaskListName } from "store/editorTextTask";
 
 export type ITaskListProps = {
     title: string;
@@ -19,11 +19,15 @@ const TaskList = (props: ITaskListProps) => {
     return (
         <Stack spacing={2}>
             <Typography variant="h5">{title}</Typography>
-            {taskListElements &&
-                taskListElements.length > 0 &&
-                taskListElements.map((element: ITextListElement, index) => {
-                    return <TaskListItem key={element.id} itemIdndex={index} listName={listName} element={element} />;
-                })}
+            <Box sx={{ height: "850px", overflow: "auto", p: "10px 10px 10px 0" }}>
+                {taskListElements &&
+                    taskListElements.length > 0 &&
+                    taskListElements.map((element: TTextListElement, index) => {
+                        return (
+                            <TaskListItem key={element.id} itemIdndex={index} listName={listName} element={element} />
+                        );
+                    })}
+            </Box>
         </Stack>
     );
 };

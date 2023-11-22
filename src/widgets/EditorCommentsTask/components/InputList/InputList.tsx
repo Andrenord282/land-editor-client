@@ -16,7 +16,7 @@ const InputList = () => {
             <Grid item>
                 <CommentListInput />
             </Grid>
-            <Grid item sx={{ position: "sticky", top: "40px" }}>
+            <Grid item>
                 <CommentatorButtonList />
             </Grid>
         </Grid>

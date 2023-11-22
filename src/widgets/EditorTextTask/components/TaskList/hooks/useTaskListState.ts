@@ -2,14 +2,14 @@
 import { useSelector } from "react-redux";
 
 // selectors //
-import { ITextListElement, selectTaskList } from "store/editorTextTask";
+import { TTextListElement, selectTaskList } from "store/editorTextTask";
 
 // types //
 import { IStore } from "store/types";
 import { ITaskListProps } from "../TaskList";
 
 type TTaskListState = {
-    taskListElements: ITextListElement[];
+    taskListElements: TTextListElement[];
 };
 
 const useTaskListState = (props: ITaskListProps): TTaskListState => {

@@ -1,19 +1,8 @@
-// utilities //
 import { ErrorManager } from "utilities";
-
-// react //
 import { useState, useEffect, ChangeEvent } from "react";
-
-// redux //
 import { useDispatch, useSelector } from "react-redux";
-
-// actions //
 import { editorTextTaskActions } from "store/editorTextTask";
-
-// selectors //
 import { selectSrcHtmlString } from "store/editorTextTask";
-
-// types//
 import { PayloadSrcHtmlString } from "store/editorTextTask";
 
 type TSrcHtmlStringState = "initsrcHtmlString" | "recordedsrcHtmlString";
@@ -51,10 +40,8 @@ const useInputHtmlState = (): TInputHtmlState => {
                 throw new ErrorManager("Error onClickWriteSrcHtmlString", "не удалось найти разметку html");
             }
 
-            const srcHtmlString = textFieldValue.replace(/s+/g, "");
-
             const data: PayloadSrcHtmlString = {
-                srcHtmlString,
+                srcHtmlString: textFieldValue,
             };
 
             dispatch(editorTextTaskActions.wrtireSrcHtmlString(data));

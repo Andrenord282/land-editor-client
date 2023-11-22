@@ -1,10 +1,5 @@
-//redux//
 import { useSelector } from "react-redux";
-
-// hooks //
 import { useCommentListState } from "./hooks/useCommentListState";
-
-//components//
 import { Box, Grid, Typography } from "@mui/material";
 
 const CommentList = () => {

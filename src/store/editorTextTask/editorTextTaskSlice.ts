@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
-    IEditorTextTaskSlice,
+    TEditorTextTaskSlice,
     PayloadLandAddress,
     PayloadInputTextList,
     PayloadSrcHtmlString,
@@ -9,17 +9,12 @@ import {
     PayloadImgFolderName,
 } from "./types";
 
-import { landAddress, srcHtmlString, inputTextList } from "data";
-import JSONDATA from "data.json";
-
-const JSONstring = JSON.stringify(JSONDATA);
-
-const initialState: IEditorTextTaskSlice = {
-    landAddress: landAddress,
-    srcHtmlString: srcHtmlString,
-    JSONstring: JSONstring,
-    imgFolderName: "images",
-    inputTextList: inputTextList,
+const initialState: TEditorTextTaskSlice = {
+    landAddress: '',
+    srcHtmlString: '',
+    JSONstring: "",
+    imgFolderName: "",
+    inputTextList: [],
     replaceText: [],
     addGeoText: [],
 };

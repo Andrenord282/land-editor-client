@@ -1,18 +1,18 @@
 import { IAnyObject } from "types";
 
-export interface ITextListElement extends IAnyObject {
+export type TTextListElement = {
     id: string;
     name: string;
-}
+};
 
-export interface IEditorTextTaskSlice {
+export type TEditorTextTaskSlice = {
     landAddress: string;
     srcHtmlString: string;
     JSONstring: string;
     imgFolderName: string;
-    inputTextList: ITextListElement[];
-    replaceText: ITextListElement[];
-    addGeoText: ITextListElement[];
+    inputTextList: TTextListElement[];
+    replaceText: TTextListElement[];
+    addGeoText: TTextListElement[];
 }
 
 export type TEditorTaskListName = "inputTextList" | "replaceText" | "addGeoText";
@@ -20,7 +20,7 @@ export type TEditorTaskListName = "inputTextList" | "replaceText" | "addGeoText"
 export type PayloadMoveTextListItem = {
     deleteInList: TEditorTaskListName;
     moveToList: TEditorTaskListName;
-    element: ITextListElement;
+    element: TTextListElement;
 };
 
 export type PayloadLandAddress = {
@@ -28,7 +28,7 @@ export type PayloadLandAddress = {
 };
 
 export type PayloadInputTextList = {
-    inputTextList: ITextListElement[];
+    inputTextList: TTextListElement[];
 };
 
 export type PayloadSrcHtmlString = {
@@ -42,5 +42,5 @@ export type PayloadImgFolderName = {
 export type PayloadUpdatedTextListItem = {
     taskListName: TEditorTaskListName;
     taskListItemIntex: number;
-    newItemValue: ITextListElement;
+    newItemValue: TTextListElement;
 };

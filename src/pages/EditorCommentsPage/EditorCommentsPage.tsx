@@ -1,4 +1,3 @@
-//widget//
 import { EditorCommentsTask } from "widgets/EditorCommentsTask";
 
 const EditorCommentsPage = () => {

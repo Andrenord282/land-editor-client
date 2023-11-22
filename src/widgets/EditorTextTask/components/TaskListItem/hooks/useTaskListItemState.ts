@@ -10,6 +10,7 @@ import { PayloadUpdatedTextListItem, TEditorTaskListName, editorTextTaskActions 
 // types //
 import { PayloadMoveTextListItem } from "store/editorTextTask";
 import { ITaskListItemProps } from "../TaskListItem";
+import { debug } from "console";
 
 type TEditorToggle = "open" | "close";
 

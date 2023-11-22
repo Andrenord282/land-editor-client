@@ -5,6 +5,7 @@ import { ErrorManager, getObjectFieldValue } from "utilities";
 import { useState, useEffect, ChangeEvent } from "react";
 
 // redux //
+import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 
 // actions //
@@ -14,7 +15,7 @@ import { editorTextTaskActions } from "store/editorTextTask";
 import { selectJSONstring } from "store/editorTextTask";
 
 // types //
-import { ITextListElement } from "store/editorTextTask";
+import { TTextListElement } from "store/editorTextTask";
 import { PayloadInputTextList } from "store/editorTextTask";
 
 type TInputTextListState = "initInputTextList" | "recordedInputTextList";
@@ -46,27 +47,38 @@ const useInputJSONstate = (): TInputJSONstate => {
         }
     }, [textFieldValue]);
 
+    const checkTypteTextFieldValue = (text: string) => {
+        const checkListItems: TTextListElement[] = [];
+
+        const parsedJSON = JSON.parse(text);
+        const checkLists = getObjectFieldValue("checklists", parsedJSON);
+
+        if (!Array.isArray(checkLists)) {
+            throw new ErrorManager("Error onClickWriteInputTextList", "не удалось найти массив чеклистов");
+        }
+
+        for (let index = 0; index < checkLists.length; index++) {
+            const checkItems = checkLists[0].checkItems;
+            checkItems.forEach((checkItem: unknown) => {
+                if (checkItem && typeof checkItem === "object" && "id" in checkItem && "name" in checkItem) {
+                    const { id, name } = checkItem;
+                    if (typeof id === "string" && typeof name === "string") {
+                        const formatedName = name.replace(/\s{2,}/g, " ").replace(/("- "|"-| -")/g, '" - "');
+
+                        checkListItems.push({ id, name: formatedName });
+                    }
+                }
+            });
+        }
+
+        return checkListItems;
+    };
+
     const onClickWriteInputTextList = () => {
         try {
-            const parsedJSON = JSON.parse(textFieldValue);
-            const checkLists = getObjectFieldValue("checklists", parsedJSON);
+            checkTypteTextFieldValue(textFieldValue);
 
-            if (!Array.isArray(checkLists)) {
-                throw new ErrorManager(
-                    "Error onClickWriteInputTextList",
-                    "не удалось найти массив чеклистов: https://"
-                );
-            }
-
-            const checkListItems: ITextListElement[][] = [];
-
-            for (let index = 0; index < checkLists.length; index++) {
-                checkListItems.push(checkLists[index].checkItems);
-            }
-
-            const inputTextList: ITextListElement[] = checkListItems.flat();
-
-            console.log(inputTextList);
+            const inputTextList: TTextListElement[] = checkTypteTextFieldValue(textFieldValue);
 
             const data: PayloadInputTextList = {
                 inputTextList,
@@ -118,3 +130,27 @@ const useInputJSONstate = (): TInputJSONstate => {
 };
 
 export { useInputJSONstate };
+
+// if (text.includes("[ ]*")) {
+//     const parsedJIRA = text.split("[ ]*");
+
+//     parsedJIRA.forEach((item) => {
+//         const id = nanoid(6);
+//         const name = item;
+//         checkListItems.push({ id, name });
+//     });
+
+//     return checkListItems;
+// }
+
+// if (text.includes("[X]* (Done)")) {
+//     const parsedJIRA = text.split("[X]* (Done)");
+
+//     parsedJIRA.forEach((item) => {
+//         const id = nanoid(6);
+//         const name = item;
+//         checkListItems.push({ id, name });
+//     });
+
+//     return checkListItems;
+// }

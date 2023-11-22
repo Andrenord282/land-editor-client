@@ -1,7 +1,5 @@
-//redux//
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-//types//
 import {
     IEditorCommnentsTaskSlice,
     PayloadSelectorType,
@@ -12,9 +10,9 @@ import {
 } from "./types";
 
 const initialState: IEditorCommnentsTaskSlice = {
-    commentNameSelector: ".user-name",
-    commentAvaSelector: ".user-img",
-    commentListSelector: ".vk-comment-load",
+    commentNameSelector: "",
+    commentAvaSelector: "",
+    commentListSelector: "",
     commentatorList: [],
     commentList: [],
 };
