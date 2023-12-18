@@ -1,6 +1,6 @@
 type TGeoTaskType = "replace-geo" | "add-geo";
 
-type TGeoValue = "RU" | "KZ" | "UZ" | "KG" | "TJ" | "";
+type TGeoValue = "RU" | "KZ" | "UZ" | "KG" | "TJ" | "GE" | "";
 
 interface IEditorGeoTaskSlice {
     initGeo: TGeoValue;
